@@ -7,7 +7,7 @@ https://github.com/yazi-rs/plugins/assets/17523360/8976308e-ebfe-4e9e-babe-153eb
 ## Installation
 
 ```sh
-ya pack -a yazi-rs/plugins:max-preview
+ya pack -a SUSTech-data/max-preview.yazi
 ```
 
 ## Usage
@@ -15,10 +15,7 @@ ya pack -a yazi-rs/plugins:max-preview
 Add this to your `~/.config/yazi/keymap.toml`:
 
 ```toml
-[[manager.prepend_keymap]]
-on   = "T"
-run  = "plugin --sync max-preview"
-desc = "Maximize or restore preview"
+{ on = [ "i" ], run = "plugin --sync max-preview --args='preview'" },
+{ on = [ "j" ], run = "plugin --sync max-preview --args='j'" },
+{ on = [ "k" ], run = "plugin --sync max-preview --args='k'" },
 ```
-
-Make sure the <kbd>T</kbd> key is not used elsewhere.
