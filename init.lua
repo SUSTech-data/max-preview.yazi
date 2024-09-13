@@ -22,18 +22,21 @@ local function mock_entry(st, args)
 	if args == nil or args[1] == "preview" then
 		return entry(st)
 	end
+	local current = cx.active.current
 	if args[1] == "j" then
 		if st.old then
-			ya.manager_emit("seek", { "5" })
+			ya.manager_emit("seek", { "1" })
 		else
-			ya.manager_emit("arrow", { "1" })
+			local new = (current.cursor + 1) % #current.files
+			ya.manager_emit("arrow", { new - current.cursor })
 		end
 	end
 	if args[1] == "k" then
 		if st.old then
-			ya.manager_emit("seek", { "-5" })
+			ya.manager_emit("seek", { "-1" })
 		else
-			ya.manager_emit("arrow", { "-1" })
+			local new = (current.cursor - 1) % #current.files
+			ya.manager_emit("arrow", { new - current.cursor })
 		end
 	end
 end
